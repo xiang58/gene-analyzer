@@ -1,44 +1,39 @@
-// Import required methods
+/**
+ * Project: Gene Analyzer
+ * Author: Daniel Xiang
+ * Version: 2.0.0
+ * Since: 2020-05-16
+ */
+
+// Require in necessary module
 const helpers = require('./helpers');
+const factory = require('./factory');
 
-// Number of DNA bases in P. Aequor
-const numBasesInPAequor = 15;
-
-// Test 1: mutate()
-//let dna1 = ['A','A','A','A','A','A','A','A','A','A','A','A','A','A','A'];
-//let pAequor1 = helpers.pAequorFactory(1, dna1);
-//let mutated = pAequor1.mutate();
-//console.log(`The mutated DNA: ${mutated}`);
-//console.log(`Now the organism's DNA becomes ${pAequor1.dna}`);
-
-// Test 2: compareDNA()
-//let dna1 = ['A','C','T','G'];
-//let dna2 = ['C','A','T','T'];
-//let pAequor1 = helpers.pAequorFactory(1, dna1);
-//let pAequor2 = helpers.pAequorFactory(2, dna2);
-//pAequor1.compareDNA(pAequor2);
-
-// Test 3: willLikelySurvive()
-//let dna1 = ['A','C','C','G'];
-//let dna2 = ['C','A','T','T'];
-//let pAequor1 = helpers.pAequorFactory(1, dna1);
-//let pAequor2 = helpers.pAequorFactory(2, dna2);
-//console.log(pAequor1.willLikelySurvive());
-//console.log(pAequor2.willLikelySurvive());
-
-// Create 30 instances of P. Aequor that are viable
-let pAequors = [];
-for (let i = 0; i < 30; i++) {
-  let pAequor, isViable;
-  do {
-    pAequor = helpers.pAequorFactory(i+1, helpers.mockUpStrand(numBasesInPAequor));
-    isViable = pAequor.willLikelySurvive();
-  } while (! isViable);
-  pAequors.push(pAequor);
+// Create `NUM_SPECIMENS` specimens of DNA length `NUM_BASES`
+const NUM_BASES = 10;
+const NUM_SPECIMENS = 10;
+const samples = [];
+for (let i = 0; i < NUM_SPECIMENS; i++) {
+  const specimen = factory(i+1, `S${i+1}`, helpers.strandGenerator('RNA', NUM_BASES), 'RNA');
+  samples.push(specimen);
 }
 
-//console.log(pAequors);
-//let viability = [];
-//for (stuff of pAequors)
-//  viability.push(stuff.willLikelySurvive());
-//console.log(viability);
+// Display these newly created samples
+/*for (const specimen of samples)
+  console.log(`ID: ${specimen.id}, Name: ${specimen.name}, Gene: ${specimen.gene}`);*/
+
+// Mutate a specimen
+/*const specimenToMutate = samples[0];
+console.log(`The original sequence: ${specimenToMutate.gene}`);
+console.log(`The mutated base: ${specimenToMutate.mutate()}`);
+console.log(`After mutation, the new sequence: ${specimenToMutate.gene}`);*/
+
+// Compute percentage of similarity between two specimens
+/*console.log(`Specimen 1: ${samples[0].gene}`);
+console.log(`Specimen 2: ${samples[1].gene}`);
+const ratio = samples[0].commonGeneRatio(samples[1]);
+console.log(`The returned ratio: ${ratio}`);*/
+
+// Compute the complement strand
+/*console.log(`Original sequence:   ${samples[0].gene}`);
+console.log(`Complement sequence: ${samples[0].complement()}`);*/

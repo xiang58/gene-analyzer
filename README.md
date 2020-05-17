@@ -1,19 +1,22 @@
-## Mysterious Organism v1.0.0 (2020-04-25)
-Context: I'm part of a research team that has found a new mysterious organism at the bottom of the ocean near hydrothermal vents. Your team names the organism, _Pila Aequor (P. Aequor)_, and finds that it is only comprised of **15 DNA bases**. The small DNA samples and frequency at which it mutates due to the hydrothermal vents make P. aequor an interesting specimen to study. However, P. aequor cannot survive above sea level and locating P. aequor in the deep sea is difficult and expensive. My job is to create JavaScript objects that simulate the DNA of P. aequor for your research team to study.
+## Gene Analyzer v2.0.0 (2020-05-16)
+Generalize the "Mysterious Organism" project to "Gene Analyzer", which provides several methods to help with genetic analysis. 
+
+#### Tech Stack
+- JavaScript, Node.js
 
 #### Release Notes
-- Key methods in helper module include:
-    1. `returnRandBase`, which returns a random DNA base (from 'A', 'T', 'C', 'G').
-    2. `mockUpStrand`, which returns a random single strand of DNA with given length.
-    3. `pAequorFactory`, which return a _P. Aequor_ object.
-- A particular _P. Aequor_ object contains:
-    1. a specimen ID `id`;
-    2. its 15-base DNA strand;
-    3. `mutate()` that mutates a single base in its DNA strand;
-    4. `compareDNA(another)` that compares itself to another _P. Aequor_ object. This method will log to the console the percentage similar between the two specimens.
-    5. `willLikelySurvive()` returns `true` if the amount of 'G' and 'C' bases is at least 60% in the whole DNA strand of this specimen; returns `false` otherwise.
-- In `main.js` there are several test which has been commented out. They were used to test helper methods. Besides, I created 30 viable (contains at least 60% 'G' and 'C' in its DNA) _P. Aequor_ specimens for researchers to use.
+- `factory` module contains 3 useful methods: 
+    - `mutate()` randomly selects a position in specimen's gene and change it to a different random base (uniform distribution).
+    - `commonGeneRatio()` compares the current specimen's gene with another specimen's gene. Returns the ratio of DNA/RNA the two specimens have in common.
+    - `complement()` returns the complement DNA/RNA strand of this specimen.
 
-*\* Project idea adopted from Codecademy*
+- `helpers` module contains several helper functions for implementing `factory`. Details of these functions are described by comments in the very module.
+
+
+
+
+
+
+_* Project idea adopted from Codecademy_
  
 **&copy; 2020 Daniel Xiang**
